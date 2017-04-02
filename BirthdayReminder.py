@@ -110,8 +110,16 @@ class Birthdays:
 
 def main():
     birthdays = Birthdays()
-    #add birthdays with birthdays.add('name', month, day, year)
-    
+    #add birthdays from birthdays.etxt file
+    with open('birthdays.etxt', 'rb') as file:
+        for line in file:
+            words = line.split()
+            name = words[0].decode("utf-8")
+            month = int(words[1])
+            day = int(words[2])
+            year = int(words[3])
+            print(name)
+            birthdays.add(name, month, day, year)
 
     #verify birthdays have been added
     birthdays.print()
